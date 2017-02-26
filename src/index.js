@@ -3,43 +3,40 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-//ReactDOM.render(
-//  <App />,
-//  document.getElementById('root')
-//);
 
-function Square (props) {
-	return(
-		<button className="square" onClick={() => props.onClick()}>
-        	{props.value}
-      	</button>
-	);
-}
-
-/*class Square extends React.Component {	
+class Square extends React.Component {	
   render() {
+  	let red = this.props.winner ? ' red' : '';
     return (
-      <button className="square" onClick={() => this.props.onClick()}>
+      <button className={"square"+red} onClick={() => this.props.onClick()}>
         {this.props.value}
       </button>
     );
   }
-}*/
+}
 
 class Board extends React.Component {
-  renderSquare(i, row, col) {
-    return <Square key={i} value={this.props.value[i]} onClick={() => this.props.onClick(i, row, col)}/>;
+  renderSquare(i, row, col, win) {
+    return <Square key={i} winner={win} value={this.props.value[i]} onClick={() => this.props.onClick(i, row, col)}/>;
   }
   render() {
+
+  	
 
   	let squares = [];
   	let num = 0;
   	let row = [];
+  	let win = false;
 
   	for(let i = 1; i <= 3; i++) {
   		row = [];
   		for(let j = 1; j <= 3; j++) {
-  			row.push(this.renderSquare(num, i,j));
+
+  			if (this.props.value.winSquares) {
+  				win = this.props.value.winSquares.indexOf(num) != -1 ? true : false;	
+  			}
+  			
+  			row.push(this.renderSquare(num, i, j, win));
   			num++;
   		}
   		squares.push(<div key={num} className="board-row">{row}</div>);
@@ -110,8 +107,8 @@ class Game extends React.Component {
 
   	let status;
   	if (winner) {
-  		console.log(winner);
-  		status = 'Winner: ' + winner;
+  		current.squares.winSquares = winner[3];
+  		status = 'Winner: ' + winner[0];
   	} else {
     	status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
   	}

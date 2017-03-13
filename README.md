@@ -6,7 +6,9 @@
 - Add a toggle button that lets you sort the moves in either ascending or descending order.
 - When someone wins, highlight the three squares that caused the win.
 
-[Check it on Heroku here](https://react-fb.herokuapp.com/).
+The solution was [deployed to Heroku](https://react-fb.herokuapp.com/).
+
+All changes are implemented in [/src/index.js](https://github.com/DusanSacha/react-fb-tutorial/blob/master/src/index.js)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

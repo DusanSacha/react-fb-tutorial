@@ -1,4 +1,4 @@
-#My solution to [React Facebook Tutorial](https://facebook.github.io/react/tutorial/tutorial.html) additional points
+My solution to [React Facebook Tutorial](https://facebook.github.io/react/tutorial/tutorial.html) additional points
 
 - Display the move locations in the format "(1, 3)" instead of "6".
 - Bold the currently-selected item in the move list.
